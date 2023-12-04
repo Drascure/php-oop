@@ -3,19 +3,30 @@
 //Création d'une classe
 class  MaClass {
     //Pour déclarer un attribut, on lui donne une visibilité (public ou private) pour savoir s'il va être instancié en dehors de la class ou non
-    public $attribut;
-    public $couleur = "vert";
-    public $age = 54;
+    public string $attribut;
+    public string $couleur = "vert";
+    public int $age = 54;
+    public string $prenom;
+    //Les constantes sont toujours en majuscules
+    public const PI = 3.14;
+
     //En private, on met un _ devant le nom de l'attribut
-    private $_nom = "Michel PLIK";
-    private $_attributPrivate;
+    private string $_nom = "Michel PLIK";
+    private string $_attributPrivate;
 
     //Déclaration d'une méthode
-    public function displayMethode($value)
+    public function displayMethode($value) : string
     {
-        echo "Je suis une méthode qui affiche " . $value;
+        echo "Je suis une méthode qui affiche " . $value . "<br>";
         //Pour pouvoir afficher le return, il faudra utiliser le echo
-        return $this->couleur;
+        return $this-> prenom . ' aime la couleur ' . $this->couleur . "<br>";
+    }
+
+    public function calculAire(float|int $rayon) : float|int
+    {
+        //self permet d'appeler un élément de la class dans laquel il se trouve
+        // echo self::PI;
+        return self::PI * $rayon * $rayon;
     }
 }
 
@@ -27,7 +38,11 @@ echo "Couleur :" . $obj->couleur;
 echo "<br>";
 echo "Age :" . $obj->age . "<br>";
 
-$obj->displayMethode(8);
+//On associe une valeur à l'attribut prenom
+$obj->prenom = "Bill";
 
 //Le echo est pour afficher le contenu du return
-echo $obj->displayMethode(8);
+//Le typage de la méthode étant en string, je dois donner un paramètre en string
+echo $obj->displayMethode("8");
+
+echo $obj->calculAire(5);
