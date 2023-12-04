@@ -9,10 +9,21 @@ class  MaClass {
     public string $prenom;
     //Les constantes sont toujours en majuscules
     public const PI = 3.14;
+    //Variable static
+    static string $varStatic = "Je suis une variable statique";
 
     //En private, on met un _ devant le nom de l'attribut
     private string $_nom = "Michel PLIK";
     private string $_attributPrivate;
+
+    //Une variable protected n'est accessible qu'avec une class qui va hériter de celle ci, on y accède que via l'héritage
+    protected string $varProtected = "Je suis une variable protected";
+
+    //Le construct s'initie dès le chargement de la page donc on la met au début de la class
+    public function __construct() 
+    {
+        echo "Je suis une méthode magique de la " . __CLASS__ . '<br>';
+    }
 
     //Déclaration d'une méthode
     public function displayMethode($value) : string
@@ -28,21 +39,29 @@ class  MaClass {
         // echo self::PI;
         return self::PI * $rayon * $rayon;
     }
+
+    static function staticFunc()
+    {
+        return "Methode statique qui affiche une variable statique " . self::$varStatic;
+    }
+
+    //Fonction qui permet de récupérer une variable privée, le GETeur
+    public function getNom()
+    {
+        return $this->_nom;
+    }
+
+    //Fonction qui permet de récupéré une information pour l'attribué à une variable privé
+    public function setNom($nom)
+    {
+        $this->_nom = $nom;
+    }
+
+    //Le destruct s'initie dès que l'instance se termine
+    public function __destruct() 
+    {
+        echo "Je suis une méthode magique (--destruct) de la " . __CLASS__ . '<br>';
+    }
+
 }
 
-//Pour instancier un objet:
-$obj = new MaClass();
-
-//Pour faire appel à un attribut d'une classe, on retire le $
-echo "Couleur :" . $obj->couleur;
-echo "<br>";
-echo "Age :" . $obj->age . "<br>";
-
-//On associe une valeur à l'attribut prenom
-$obj->prenom = "Bill";
-
-//Le echo est pour afficher le contenu du return
-//Le typage de la méthode étant en string, je dois donner un paramètre en string
-echo $obj->displayMethode("8");
-
-echo $obj->calculAire(5);

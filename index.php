@@ -1,13 +1,48 @@
-<?php include "MaClass.php" ?>
+<?php 
+include "MaClass.php";
+include "MaClassHerite.php";
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
-</html>
+
+/*//Les variable statique peuvent être appelé sans qu'on ai besoi d'instancer l'objet
+echo MaClass::$varStatic;
+echo "<br>";
+
+//Pour instancier un objet:
+$obj = new MaClass();
+
+//Pour faire appel à un attribut d'une classe, on retire le $
+echo "Couleur :" . $obj->couleur;
+echo "<br>";
+echo "Age :" . $obj->age . "<br>";
+
+//On associe une valeur à l'attribut prenom
+$obj->prenom = "Bill";
+
+//Le echo est pour afficher le contenu du return
+//Le typage de la méthode étant en string, je dois donner un paramètre en string
+echo $obj->displayMethode("8");
+echo "<br>";
+
+echo $obj->calculAire(5);
+echo "<br>";
+
+echo MaClass::staticFunc();*/
+
+$objHerite = new MaClassHerite();
+
+echo $objHerite->getCouleur();
+
+echo '<br>';
+
+echo $objHerite->getVariableProtected();
+
+$obj2 = new MaClass();
+
+echo '<br>';
+
+$obj2->setNom("Jean-Jacques Goldman");
+
+
+
+echo $obj2->getNom();
+
