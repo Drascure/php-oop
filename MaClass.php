@@ -12,7 +12,7 @@ class  MaClass {
     //Variable static
     static string $varStatic = "Je suis une variable statique";
 
-    //En private, on met un _ devant le nom de l'attribut
+    //En private, on met un _ devant le nom de l'attribut, et elle ne sera pas hérité si la class l'est
     private string $_nom = "Michel PLIK";
     private string $_attributPrivate;
 
@@ -22,7 +22,7 @@ class  MaClass {
     //Le construct s'initie dès le chargement de la page donc on la met au début de la class
     public function __construct() 
     {
-        echo "Je suis une méthode magique de la " . __CLASS__ . '<br>';
+        echo "Je suis une méthode magique de " . __CLASS__ . '<br>';
     }
 
     //Déclaration d'une méthode

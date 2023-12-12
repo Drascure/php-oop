@@ -3,7 +3,7 @@ include "MaClass.php";
 include "MaClassHerite.php";
 
 
-/*//Les variable statique peuvent être appelé sans qu'on ai besoi d'instancer l'objet
+/*//Les variable statique peuvent être appelé sans qu'on ai besoin d'instancer l'objet
 echo MaClass::$varStatic;
 echo "<br>";
 
@@ -30,11 +30,24 @@ echo MaClass::staticFunc();*/
 
 $objHerite = new MaClassHerite();
 
-echo $objHerite->getCouleur();
+// echo $objHerite->getCouleur();
 
 echo '<br>';
 
 echo $objHerite->getVariableProtected();
+
+echo '<br>';
+
+
+$objHerite->setVariableProtected("Une chaine de caractère");
+
+echo '<br>';
+
+
+echo $objHerite->getVariableProtected();
+
+echo '<br>';
+
 
 $obj2 = new MaClass();
 
@@ -42,6 +55,7 @@ echo '<br>';
 
 $obj2->setNom("Jean-Jacques Goldman");
 
+echo '<br>';
 
 
 echo $obj2->getNom();
