@@ -7,12 +7,24 @@ class  MaClass {
     public string $couleur = "vert";
     public int $age = 54;
     public string $prenom;
+    public string $nom;
     //Les constantes sont toujours en majuscules
     public const PI = 3.14;
 
     //En private, on met un _ devant le nom de l'attribut
     private string $_nom = "Michel PLIK";
     private string $_attributPrivate;
+
+    public function __construct($nom,$prenom)
+    {
+        $this->nom = $nom;
+        $this->prenom = $prenom;
+    }
+
+    public function afficherNom()
+    {
+        return "Cette belle personne est:" . $this->prenom . " " . $this->nom;
+    }
 
     //Déclaration d'une méthode
     public function displayMethode($value) : string
@@ -30,7 +42,7 @@ class  MaClass {
     }
 }
 
-//Pour instancier un objet:
+/* //Pour instancier un objet:
 $obj = new MaClass();
 
 //Pour faire appel à un attribut d'une classe, on retire le $
@@ -39,10 +51,15 @@ echo "<br>";
 echo "Age :" . $obj->age . "<br>";
 
 //On associe une valeur à l'attribut prenom
-$obj->prenom = "Bill";
+// $obj->prenom = "Bill";
 
 //Le echo est pour afficher le contenu du return
 //Le typage de la méthode étant en string, je dois donner un paramètre en string
 echo $obj->displayMethode("8");
 
 echo $obj->calculAire(5);
+
+echo "<br>"; */
+
+$person = new MaClass("John", "JOSEPH");
+echo $obj->afficherNom();
